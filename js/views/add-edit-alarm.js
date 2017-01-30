@@ -61,7 +61,7 @@ define([
                 remainingDays,
                 repeatingDays;
                 amPmTime = amPmHours+":"+minutes+":00";
-                if(amPm === "pm"){
+                if(amPm === "PM"){
                     militaryHours = Number(amPmHours)+12;
                     militaryTime = militaryHours+":"+minutes+":00";
                 }

@@ -24,11 +24,15 @@ define([
                     "repeatingDays":model.get("repeatingDays"),
                     "time":model.get("amPmTime"),
                     "amPm":model.get("amPm"),
-                    "guid":model.get("guid"),
-                    "isActive":model.get("isActive")
+                    "guid":model.get("guid")
             },
-            eachAlarmTpl = Handlebars.templates['each-alarm.template'](templateOptions);
+            eachAlarmTpl = Handlebars.templates['each-alarm.template'](templateOptions),
+            isActive = model.get("isActive");
             this.$el.append(eachAlarmTpl);
+            if(!isActive){
+                this.$el.toggleClass("off");
+            }
+            this.$el.find(".enable-disable-alarm").prop("checked", isActive);
         },
         "enableDisableAlarm":function(){
             var isActive = this.model.get("isActive");

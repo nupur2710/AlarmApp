@@ -14,7 +14,6 @@ define([
         "startClock":function(){
             var today = new Date();
              this.set("currentTime", today);
-
         },
 
     });

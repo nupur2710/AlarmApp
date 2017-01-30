@@ -1,7 +1,7 @@
 
     <label href="#" data-template="about" data-context-name="about" class="item-link item-content">
      <div class="remove delete-alarm">X</div>
-          <input type="checkbox" checked={{isActive}} class="enable-disable-alarm">
+          <input type="checkbox" class="enable-disable-alarm">
           <strong>{{time}}<sub>{{amPm}}</sub></strong>
           <small>{{label}}, {{repeatingDays}}</small>
           <span class="edit-icon"></span>

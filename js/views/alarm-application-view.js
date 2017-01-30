@@ -7,7 +7,8 @@ define([
     "template/each-alarm",
     "js/views/alarm-view",
     "js/models/alarm-model",
-], function(AlarmApplicationModel, MainViewTemplate, UpdateClockTemplate, AddEditAlarmView, AlarmListTemplate, EachAlarmTemplate, AlarmView, AlarmModel) {
+    "template/play-alarm"
+], function(AlarmApplicationModel, MainViewTemplate, UpdateClockTemplate, AddEditAlarmView, AlarmListTemplate, EachAlarmTemplate, AlarmView, AlarmModel, PlayAlarmTemplate) {
     'use strict';
     var AppManagerView = Backbone.View.extend({
         // "defaults":{
@@ -22,17 +23,13 @@ define([
         },
         "initialize":function(){
             this.render();
-            this.bindEventsListeners();
         },
         "render":function(){
            var refresh = window.setInterval(this.startClock.bind(this), 500), 
+                playAlarm = window.setInterval(this.startAlarm.bind(this), 10000),
                 mainViewtpl = Handlebars.templates['main-view.template'];
             this.$el.find(".alarm-list").remove();
             this.$el.append(mainViewtpl);  
-        },
-
-        "bindEventsListeners":function(){
-
         },
 
         "startClock": function () {
@@ -42,6 +39,38 @@ define([
             this.updateTimeDateInModel();
             this.updateClockView();
         },
+
+        "startAlarm":function(){
+            var alarmCollection = this.model.get("alarmCollection"), model, time;
+            for(var index=0;index<alarmCollection.length;index++){
+                model = alarmCollection.at(index);
+                time = model.get("militaryTime");
+                if((this.currentTime).substring(0,5)===(time).substring(0,5)){
+                    this.showAlarmPopup(model);
+                }
+            }
+        },
+
+        "showAlarmPopup":function(model){
+            if(this.$(".alarm-playing").length){
+                return;
+            }
+            var templateOptions = {
+                "time":this.currentTime,
+                "label":model.get("label"),
+                "date":this.currentDate
+            },
+            playAlarmTpl = Handlebars.templates['play-alarm.template'](templateOptions);
+            this.hideAlarmList();
+            this.$(".main-class").hide();
+            this.$el.append(playAlarmTpl);
+            window.setTimeout(function(){
+                this.$(".alarm-playing").remove();
+                this.$(".main-class").show();
+                this.showAlarmList();
+            }.bind(this), 600000);
+        },
+
 
         "updateTimeDateInModel":function(){
             this.model.set({"currentTime": this.currentTime,"currentDate": this.currentDate});
