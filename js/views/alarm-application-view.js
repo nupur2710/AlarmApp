@@ -107,8 +107,11 @@ define([
                 "hasAlarms": hasAlarms
             };
             alarmListTpl = Handlebars.templates['alarm-list.template'](templateOptions);
-            this.$el.append(alarmListTpl);
+            this.$el.append(alarmListTpl);            
             if(hasAlarms){
+                alarmCollection.models.sort(function(a,b){
+                    return a.get("timeStamp") - b.get("timeStamp");
+                });
                  for(index=0;index<alarmCollection.length;index++){
                     currentAlarmModel = alarmCollection.models[index];
                     $listItem = $('<li>').attr('data-guid',currentAlarmModel.get("guid")).addClass('item individual-alarm-container');

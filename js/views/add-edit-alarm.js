@@ -1,14 +1,12 @@
 define([
-    "js/models/alarm-model",
     "template/add-edit-alarm"
-], function(AlarmModel, AddEditAlarmTemplate) {
+], function(AddEditAlarmTemplate) {
     'use strict';
     var AddEditAlarmListView = Backbone.View.extend({
         "events":{
             "click .save":"saveAlarmClicked",
             "click .cancel":"cancelAlarmClicked",
-            "click .delete":"deleteAlarmClicked",
-            "change .days":"repeatDaysChange"
+            "click .delete":"deleteAlarmClicked"
         },
         "initialize":function(){
             this.render();  
@@ -59,7 +57,8 @@ define([
                             return this.id;
                         }).get(),
                 remainingDays,
-                repeatingDays;
+                repeatingDays, timeStamp,
+                date= new Date();
                 amPmTime = amPmHours+":"+minutes+":00";
                 if(amPm === "PM"){
                     militaryHours = Number(amPmHours)+12;
@@ -70,7 +69,9 @@ define([
                     militaryTime = amPmTime
                 }
 
-                var remainingDays = _.difference(this.days, days);
+                timeStamp = date.setHours(militaryHours, minutes, 0, 0);
+
+                remainingDays = _.difference(this.days, days);
 
                 if(remainingDays.length===0){
                     repeatingDays="Everyday";
@@ -90,7 +91,8 @@ define([
                 "guid":this.generateGuid(),
                 "label":this.$(".alarm-label").val(),
                 "amPm":amPm,
-                "repeatingDays":repeatingDays
+                "repeatingDays":repeatingDays,
+                "timeStamp":timeStamp
            });
             this.trigger(this.constructor.EVENTS.SAVE_ALARM, this.model); 
         },
@@ -108,9 +110,6 @@ define([
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)
                 .substring(1);
-        },
-        "repeatDaysChange":function(event){
-
         }
     },{
         EVENTS:{
