@@ -56,7 +56,7 @@ define([
                 return;
             }
             var templateOptions = {
-                "time":this.currentTime,
+                "time":model.get("militaryTime"),
                 "label":model.get("label"),
                 "date":this.currentDate
             },
@@ -68,7 +68,7 @@ define([
                 this.$(".alarm-playing").remove();
                 this.$(".main-class").show();
                 this.showAlarmList();
-            }.bind(this), 600000);
+            }.bind(this), 60000);
         },
 
 
