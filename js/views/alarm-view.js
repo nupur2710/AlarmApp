@@ -46,13 +46,15 @@ define([
 
         "removeView":function(){
             this.remove();
+            this.trigger(this.constructor.EVENTS.REMOVE_SINGLE_ALARM);
         },
         "editIndividualAlarm":function(event){
             this.trigger(this.constructor.EVENTS.EDIT_INDIVIDUAL_VIEW, this.model);
         }
     },{
         EVENTS:{
-            "EDIT_INDIVIDUAL_VIEW":"edit-individual-view"
+            "EDIT_INDIVIDUAL_VIEW":"edit-individual-view",
+            "REMOVE_SINGLE_ALARM":"remove-single-alarm"
         }
     });
     return AlarmView;

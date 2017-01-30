@@ -121,7 +121,14 @@ define([
                         "el": $listItem
                     });
                     this.listenTo(singleAlarmView, AlarmView.EVENTS.EDIT_INDIVIDUAL_VIEW, this.editIndividualView);
+                    this.listenTo(singleAlarmView, AlarmView.EVENTS.REMOVE_SINGLE_ALARM, this.singleAlarmRemoved);
                 }
+            }
+        },
+
+        "singleAlarmRemoved":function(){
+            if(!this.model.get("alarmCollection").length){
+                this.doneClicked();
             }
         },
         "clockLinkClicked":function(){
@@ -168,6 +175,7 @@ define([
         "doneClicked":function(){
             this.$el.find(".alarm-list-container").find('li').removeClass("edit");
             this.renderAddView();
+            this.alarmLinkClicked();
         },
 
         "hideAlarmList":function(){
