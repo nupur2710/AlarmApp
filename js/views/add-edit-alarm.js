@@ -60,6 +60,11 @@ define([
                 repeatingDays, timeStamp,
                 date= new Date();
                 amPmTime = amPmHours+":"+minutes+":00";
+
+                if(amPmHours==="HH" || minutes ==="MM"){
+                    window.alert("Please update the alarm timings");
+                    return;
+                }
                 if(amPm === "PM"){
                     militaryHours = Number(amPmHours)+12;
                     militaryTime = militaryHours+":"+minutes+":00";
