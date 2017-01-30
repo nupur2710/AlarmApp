@@ -139,7 +139,7 @@ define([
         },
 
         "hideAlarmList":function(){
-            this.$(".alarm-list").hide();
+            this.$(".alarm-list").hide();     
         },
         "showAlarmList":function(){
             this.$(".alarm-list").show();
