@@ -45,7 +45,7 @@ define([
             for(var index=0;index<alarmCollection.length;index++){
                 model = alarmCollection.at(index);
                 time = model.get("militaryTime");
-                if((this.currentTime).substring(0,5)===(time).substring(0,5)){
+                if(model.get("isActive") && (this.currentTime).substring(0,5)===(time).substring(0,5)){
                     this.showAlarmPopup(model);
                 }
             }
