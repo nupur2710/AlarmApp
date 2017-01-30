@@ -157,6 +157,7 @@ define([
 
         "editAlarmsClicked":function(){
             this.$el.find(".alarm-list-container").find('li').addClass("edit");
+            this.$el.find(".navbar-heading").text(" Edit Alarm");
             this.renderEditView();
         },
 
@@ -174,6 +175,7 @@ define([
 
         "doneClicked":function(){
             this.$el.find(".alarm-list-container").find('li').removeClass("edit");
+            this.$el.find(".navbar-heading").text("Alarm");
             this.renderAddView();
             this.alarmLinkClicked();
         },

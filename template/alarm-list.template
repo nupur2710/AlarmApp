@@ -2,7 +2,7 @@
   <div class="navbar">
     <a class="pills left editAlarms edit-alarm-link">Edit</a>
     <a class="pills left editAlarms done-link remove-class">Done</a>
-      <h1>Alarm</h1>
+      <h1 class="navbar-heading">Alarm</h1>
     <a class="pills right addAlarm add-alarm-link">Add</a>
   </div>
   <div class="page">
