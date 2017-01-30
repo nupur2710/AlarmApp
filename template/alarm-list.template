@@ -1,0 +1,23 @@
+<div class="wrap alarm-list" id="clock">
+  <div class="navbar">
+    <a class="pills left editAlarms edit-alarm-link">Edit</a>
+    <a class="pills left editAlarms done-link remove-class">Done</a>
+      <h1>Alarm</h1>
+    <a class="pills right addAlarm add-alarm-link">Add</a>
+  </div>
+  <div class="page">
+    {{#if hasAlarms}}
+    <ul class="list alarm-list-container">
+    </ul>
+    {{else}}
+    <div class="clock">
+      <p>No Alarms set</p>
+    </div>
+    {{/if}}    
+  </div>      
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <a href="#" class="link clock-link">Clock</a>            
+    </div>
+  </div>
+</div>

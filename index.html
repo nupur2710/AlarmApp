@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Alarm Clock</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vendor/jquery-3.1.1.min.js"></script>
+  <script src="vendor/underscore-min.js"></script>
+  <script src="vendor/backbone-min.js"></script>
+  <script src="vendor/handlebars.js"></script>
+  <script src="vendor/require.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="alarm-app-container">
+  </div>
+  <script>
+    require.config({
+        baseUrl:'./'
+    });
+    require(['js/app.js'],function(){
+
+    })
+  </script>
+</body>
+</html>
