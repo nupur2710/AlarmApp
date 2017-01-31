@@ -48,6 +48,9 @@ define([
             this.$(".minutes").val(minutes);
             this.$(".amPm").val(model.get("amPm"));
             this.$(".alarm-label").val(model.get("label"));
+            for(var index=0;index<model.get("days").length;index++){
+                this.$("."+model.get("days")[index]).prop("checked", true);
+            }
         },
 
         "saveAlarmClicked":function(){
@@ -97,7 +100,8 @@ define([
                 "label":this.$(".alarm-label").val(),
                 "amPm":amPm,
                 "repeatingDays":repeatingDays,
-                "timeStamp":timeStamp
+                "timeStamp":timeStamp,
+                "days":days
            });
             this.trigger(this.constructor.EVENTS.SAVE_ALARM, this.model); 
         },
