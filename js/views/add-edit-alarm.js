@@ -6,7 +6,8 @@ define([
         "events": {
             "click .save": "saveAlarmClicked",
             "click .cancel": "cancelAlarmClicked",
-            "click .delete": "deleteAlarmClicked"
+            "click .delete": "deleteAlarmClicked",
+            "change .snooze-alarm": "snoozeAlarmOnOff"
         },
         "initialize": function() {
             this.render();
@@ -31,7 +32,8 @@ define([
             templateOptions = {
                 "hours": hours,
                 "minutes": minutes,
-                "days": this.days
+                "days": this.days,
+                "snooze": true
             }
             var alarmListTpl = Handlebars.templates['add-edit-alarm.template'](templateOptions);
             this.$el.append(alarmListTpl);
@@ -52,6 +54,7 @@ define([
             for (var index = 0; index < model.get("days").length; index++) {
                 this.$("." + model.get("days")[index]).prop("checked", true);
             }
+            this.$(".snooze-alarm").prop("checked", this.model.get("snooze"));
         },
 
         "saveAlarmClicked": function() {
@@ -104,6 +107,11 @@ define([
                 "days": days
             });
             this.trigger(this.constructor.EVENTS.SAVE_ALARM, this.model);
+        },
+
+        "snoozeAlarmOnOff": function() {
+            var model = this.model;
+            model.set("snooze", !model.get("snooze"));
         },
 
         "cancelAlarmClicked": function() {
