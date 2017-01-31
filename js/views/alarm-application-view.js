@@ -42,11 +42,19 @@ define([
 
         "startAlarm": function() {
             var alarmCollection = this.model.get("alarmCollection"),
-                model, time;
+                model, time, repeatingDays;
+
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var today = days[new Date().getDay()];
+
             for (var index = 0; index < alarmCollection.length; index++) {
                 model = alarmCollection.at(index);
+                repeatingDays = model.get('repeatingDays').split(' ');
                 time = model.get("militaryTime");
-                if (model.get("isActive") && (this.currentTime).substring(0, 5) === (time).substring(0, 5)) {
+
+                // If today is one of the days the alarm is set to repeat then trigger it
+                if (model.get("isActive") && (this.currentTime).substring(0, 5) === (time).substring(0, 5)
+                    && repeatingDays.indexOf(today) !== -1) {
                     this.showAlarmPopup(model);
                 }
             }
