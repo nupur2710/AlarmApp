@@ -37,11 +37,11 @@ define([
 
         "startClock": function() {
             var currentTime = new Date();
+            this.currentTime = currentTime.toTimeString().split(' ')[0];
+            this.currentDate = currentTime.toDateString();
             if (currentTime.getSeconds() === 0) {
                 this.startAlarm();
             }
-            this.currentTime = currentTime.toTimeString().split(' ')[0];
-            this.currentDate = currentTime.toDateString();
             this.updateTimeDateInModel();
             this.updateClockView();
         },

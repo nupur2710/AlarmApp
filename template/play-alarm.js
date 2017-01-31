@@ -13,6 +13,6 @@ templates['play-alarm.template'] = template({"1":function(container,depth0,helpe
     + alias4(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data}) : helper)))
     + "\r\n            </p>\r\n        </div>\r\n        <div class=\"action\">\r\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.snooze : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\r\n            <a href=\"#\" data-panel=\"left\" class=\"button small stop-button\">Stop</a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+    + "\r\n            <a href=\"#\" data-panel=\"left\" class=\"button small stop-button\">Stop</a>\r\n        </div>\r\n    </div>\r\n    <audio autoplay loop>\r\n        <source src=\"./audio/1.mp3\" type=\"audio/ogg\">\r\n        <source src=\"./audio/1.mp3\" type=\"audio/mpeg\"> Your browser does not support the audio element.\r\n    </audio>\r\n</div>\r\n";
 },"useData":true});
 })();
