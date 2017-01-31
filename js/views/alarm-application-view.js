@@ -53,8 +53,9 @@ define([
                 time = model.get("militaryTime");
 
                 // If today is one of the days the alarm is set to repeat then trigger it
+                // If no repeating day is set, trigger it - works like once in alarms
                 if (model.get("isActive") && (this.currentTime).substring(0, 5) === (time).substring(0, 5)
-                    && repeatingDays.indexOf(today) !== -1) {
+                    && (repeatingDays.indexOf(today) !== -1|| repeatingDays.indexOf("")===0)) {
                     this.showAlarmPopup(model);
                 }
             }
