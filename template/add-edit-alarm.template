@@ -27,7 +27,7 @@
         </p>
         <p class="item select selected">
           <label href="#" for="Snooze">
-            <input type="checkbox" class="snooze-alarm">
+            <input type="checkbox" class="snooze-alarm" checked={{snooze}}>
             <span>Snooze</span>
           </label>
         </p>

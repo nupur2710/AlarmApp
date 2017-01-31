@@ -22,7 +22,7 @@ define([
                 }
                 hours.push(i);
             }
-            for (var i = 1; i <= 60; i++) {
+            for (var i = 0; i < 60; i++) {
                 if (i < 10) {
                     i = "0" + i;
                 }
