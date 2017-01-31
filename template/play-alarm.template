@@ -9,7 +9,7 @@
     </div>
     <div class="action">
       <a href="#" data-panel="left" class="button open-panel">Snooze</a>
-      <a href="#" data-panel="left" class="button small">Stop</a>
+      <a href="#" data-panel="left" class="button small stop-button">Stop</a>
     </div>
   </div>
 </div>

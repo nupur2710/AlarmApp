@@ -19,21 +19,28 @@ define([
             "click .clock-link": "clockLinkClicked",
             "click .add-alarm-link": "addAlarmClicked",
             "click .edit-alarm-link": "editAlarmsClicked",
-            "click .done-link": "doneClicked"
+            "click .done-link": "doneClicked",
+            "click .stop-button": "stopAlarmClicked"
         },
         "initialize": function() {
             this.render();
         },
         "render": function() {
-            var refresh = window.setInterval(this.startClock.bind(this), 500),
-                playAlarm = window.setInterval(this.startAlarm.bind(this), 10000),
-                mainViewtpl = Handlebars.templates['main-view.template'];
+            var mainViewtpl = Handlebars.templates['main-view.template'],
+                refresh, playAlarm;
             this.$el.find(".alarm-list").remove();
             this.$el.append(mainViewtpl);
+            this.startClock();
+            refresh = window.setInterval(this.startClock.bind(this), 1000);
+            //playAlarm = window.setInterval(this.startAlarm.bind(this), 10000);
         },
 
         "startClock": function() {
             var currentTime = new Date();
+            if(currentTime.getSeconds()===0){
+                debugger
+                this.startAlarm();
+            }
             this.currentTime = currentTime.toTimeString().split(' ')[0];
             this.currentDate = currentTime.toDateString();
             this.updateTimeDateInModel();
@@ -54,8 +61,7 @@ define([
 
                 // If today is one of the days the alarm is set to repeat then trigger it
                 // If no repeating day is set, trigger it - works like once in alarms
-                if (model.get("isActive") && (this.currentTime).substring(0, 5) === (time).substring(0, 5)
-                    && (repeatingDays.indexOf(today) !== -1|| repeatingDays.indexOf("")===0)) {
+                if (model.get("isActive") && (this.currentTime).substring(0, 5) === (time).substring(0, 5) && (repeatingDays.indexOf(today) !== -1 || repeatingDays.indexOf("") === 0)) {
                     this.showAlarmPopup(model);
                 }
             }
@@ -71,14 +77,20 @@ define([
                     "date": this.currentDate
                 },
                 playAlarmTpl = Handlebars.templates['play-alarm.template'](templateOptions);
+            this.ringingAlarmModel = model;
             this.hideAlarmList();
             this.$(".main-class").hide();
             this.$el.append(playAlarmTpl);
             window.setTimeout(function() {
-                this.$(".alarm-playing").remove();
-                this.$(".main-class").show();
-                this.showAlarmList();
+                this.stopAlarmClicked();
             }.bind(this), 60000);
+        },
+
+        "stopAlarmClicked": function() {
+            this.ringingAlarmModel.set("isActive", false);
+            this.$(".alarm-playing").remove();
+            this.$(".main-class").show();
+            this.showAlarmList();
         },
 
 
