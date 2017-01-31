@@ -64,8 +64,8 @@ define([
                 }).get(),
                 remainingDays,
                 repeatingDays, timeStamp,
-                date = new Date();
-            amPmTime = amPmHours + ":" + minutes + ":00";
+                date = new Date(),
+                amPmTime = amPmHours + ":" + minutes + ":00";
 
             if (amPmHours === "HH" || minutes === "MM") {
                 window.alert("Please update the alarm timings");
