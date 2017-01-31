@@ -101,6 +101,10 @@ a {
     color: #007aff;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .wrap {
     width: 320px;
     margin: auto;
