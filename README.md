@@ -1,15 +1,14 @@
 # AlarmApp
 
-A digital clock with the ability to set and maanage alarms.
+A digital clock with the ability to set and manage alarms.
 
 ## Features
 
-It shows a digital clock and creates and manages alarms
-
-- [x] Digital clock shows the current date, day and time
-- [x] Ability to add, edit and remove alarms
-- [x] Ability to enable/disable alarms
-- [x] Alarms are sorted according to their trigger time
+* Digital clock shows the current date, day and time
+* Add, edit and remove alarms
+* Enable or disable alarm
+* Alarms can be set to trigger on specific days
+* Alarms are sorted according to their trigger time
 
 ## TODO
 
