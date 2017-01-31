@@ -7,10 +7,12 @@ A digital clock with the ability to set and manage alarms.
 * Digital clock shows the current date, day and time
 * Add, edit and remove alarms
 * Enable or disable alarm
+* Enable or disable snooze
 * Alarms can be set to trigger on specific days
 * Alarms are sorted according to their trigger time
+* Alarms can be stopped with the stop button, if not the alarm will automatically be cancelled after a minute
+* A default sound is played when the alarm triggers
 
 ## TODO
 
-- [ ] Implement snooze and stop alarm functionality. Currently, the alarm is automatically cancelled after a minute
-- [ ] Play a sound when the alarm is triggered
+- [ ] Provide sound options to be selected while setting the alarm, and play the corresponding sound
