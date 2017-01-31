@@ -1,12 +1,12 @@
 <div class="wrap main-class" id="clock">
-  <div class="navbar">
-    <h1>Clock</h1>
-  </div>
-  <div class="digital-clock-container"></div>
-  <div class="toolbar">
-    <div class="toolbar-inner">
-      <a href="#" class="link clock-link">Clock</a>
-      <a href="#" class="link alarm-link">Alarm</a>
+    <div class="navbar">
+        <h1>Clock</h1>
     </div>
-  </div>
+    <div class="digital-clock-container"></div>
+    <div class="toolbar">
+        <div class="toolbar-inner">
+            <a href="#" class="link clock-link">Clock</a>
+            <a href="#" class="link alarm-link">Alarm</a>
+        </div>
+    </div>
 </div>

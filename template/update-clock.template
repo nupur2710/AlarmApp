@@ -1,6 +1,6 @@
- <div class="page digital-clock">
-   <div class="clock">
-         {{time}}
-     <small>{{date}}</small>
- 	</div>
-</div> 
+<div class="page digital-clock">
+    <div class="clock">
+        {{time}}
+        <small>{{date}}</small>
+    </div>
+</div>

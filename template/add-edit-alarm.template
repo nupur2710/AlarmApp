@@ -1,59 +1,59 @@
 <div class="wrap add-edit-alarm" id="AddEdit">
-  <div class="navbar">
-    <a class="pills left cancel">Cancel</a>
-    <h1>Alarm/Edit</h1>
-    <a class="pills right save">Save</a>
-  </div>
-  <div class="page">
-    <div class="content-block-title">Select Time</div>
-      <div class="content-block-inner">
-        <p>
-          <select class="hours">
-            <option>HH</option>
-            {{#each hours}}
-            <option value={{this}}>{{this}}</option>
-            {{/each}}
-          </select>
-          <select class="minutes">
-            <option>MM</option>
-            {{#each minutes}}
-            <option value={{this}}>{{this}}</option>
-            {{/each}}
-          </select>
-          <select class="amPm">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
-        </p>
-        <p class="item select selected">
-          <label href="#" for="Snooze">
-            <input type="checkbox" class="snooze-alarm" checked={{snooze}}>
-            <span>Snooze</span>
-          </label>
-        </p>
-        <p class="item select selected">
-          <label href="#" for="Label">
-            <input type="text" value="" class="alarm-label">
-            <span>Label</span>
-          </label>
-        </p>      
-      </div> 
-      <div class="content-block-title">Repeat</div>
+    <div class="navbar">
+        <a class="pills left cancel">Cancel</a>
+        <h1>Alarm/Edit</h1>
+        <a class="pills right save">Save</a>
+    </div>
+    <div class="page">
+        <div class="content-block-title">Select Time</div>
+        <div class="content-block-inner">
+            <p>
+                <select class="hours">
+                    <option>HH</option>
+                    {{#each hours}}
+                    <option value={{this}}>{{this}}</option>
+                    {{/each}}
+                </select>
+                <select class="minutes">
+                    <option>MM</option>
+                    {{#each minutes}}
+                    <option value={{this}}>{{this}}</option>
+                    {{/each}}
+                </select>
+                <select class="amPm">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </p>
+            <p class="item select selected">
+                <label href="#" for="Snooze">
+                    <input type="checkbox" class="snooze-alarm" checked={{snooze}}>
+                    <span>Snooze</span>
+                </label>
+            </p>
+            <p class="item select selected">
+                <label href="#" for="Label">
+                    <input type="text" value="" class="alarm-label">
+                    <span>Label</span>
+                </label>
+            </p>
+        </div>
+        <div class="content-block-title">Repeat</div>
         <ul class="list">
-        {{#each days}}
-          <li class="item select selected">
-            <label href="#" for={{this}}>
-              <input type="checkbox" class="days {{this}}" id={{this}}>
-              <span>{{this}}</span>
-            </label>
-          </li>
-        {{/each}}
+            {{#each days}}
+            <li class="item select selected">
+                <label href="#" for={{this}}>
+                    <input type="checkbox" class="days {{this}}" id={{this}}>
+                    <span>{{this}}</span>
+                </label>
+            </li>
+            {{/each}}
         </ul>
-  </div>
-  <div class="action">
+    </div>
+    <div class="action">
         <!-- show this if you are adding alarm -->
         <a href="#" data-panel="left" class="button open-panel save">Save Alarm</a>
         <!-- show this if you are editing alarm -->
         <a href="#" data-panel="left" class="button open-panel danger delete">Delete Alarm</a>
-  </div>
+    </div>
 </div>

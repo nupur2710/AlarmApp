@@ -20,7 +20,8 @@ define([
             "click .add-alarm-link": "addAlarmClicked",
             "click .edit-alarm-link": "editAlarmsClicked",
             "click .done-link": "doneClicked",
-            "click .stop-button": "stopAlarmClicked"
+            "click .stop-button": "stopAlarmClicked",
+            "click .snooze-button": "snoozeButtonClicked"
         },
         "initialize": function() {
             this.render();
@@ -32,13 +33,11 @@ define([
             this.$el.append(mainViewtpl);
             this.startClock();
             refresh = window.setInterval(this.startClock.bind(this), 1000);
-            //playAlarm = window.setInterval(this.startAlarm.bind(this), 10000);
         },
 
         "startClock": function() {
             var currentTime = new Date();
-            if(currentTime.getSeconds()===0){
-                debugger
+            if (currentTime.getSeconds() === 0) {
                 this.startAlarm();
             }
             this.currentTime = currentTime.toTimeString().split(' ')[0];
@@ -75,7 +74,8 @@ define([
             var templateOptions = {
                     "time": model.get("militaryTime"),
                     "label": model.get("label"),
-                    "date": this.currentDate
+                    "date": this.currentDate,
+                    "snooze":model.get("snooze")
                 },
                 playAlarmTpl = Handlebars.templates['play-alarm.template'](templateOptions);
             this.ringingAlarmModel = model;
@@ -92,6 +92,10 @@ define([
             this.$(".alarm-playing").remove();
             this.$(".main-class").show();
             this.showAlarmList();
+        },
+
+        "snoozeButtonClicked": function() {
+            this.stopAlarmClicked();
         },
 
 
